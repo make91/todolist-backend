@@ -3,3 +3,31 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  hr
+  h2 Links
+  ul
+    li
+      a(href="/todos") Todos API endpoint
+  hr
+  h2 Curl notes
+  ul
+    li
+      b Get all
+      pre.
+        curl -s http://localhost:3000/todos | jq
+    li
+      b Get one
+      pre.
+        curl -s http://localhost:3000/todos/[id] | jq
+    li
+      b Post
+      pre.
+        curl -sd "msg=Post" -X POST http://localhost:3000/todos | jq
+    li
+      b Delete
+      pre.
+        curl -sX DELETE http://localhost:3000/todos/[id] | jq
+    li
+      b Put
+      pre.
+        curl -sH "Content-Type: application/json" -d '{"msg":"Update"}' -X PUT http://localhost:3000/todos/[id] | jq
